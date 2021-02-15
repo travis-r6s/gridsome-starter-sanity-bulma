@@ -1,5 +1,5 @@
 module.exports = api => {
-  api.createSchema(({ addSchemaTypes }) => {
+  api.createSchema(({ addSchemaTypes, addSchemaResolvers }) => {
     // Required to fix missing type bug
     addSchemaTypes(`
       type SanityDocument implements Node @infer {
