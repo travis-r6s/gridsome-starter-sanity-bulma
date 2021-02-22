@@ -1,5 +1,6 @@
 // Plugins
 import image from '~/image'
+import { VueReCaptcha } from 'vue-recaptcha-v3'
 
 // Layouts
 import DefaultLayout from '~/layouts/Default.vue'
@@ -11,7 +12,7 @@ import BlockContent from 'sanity-blocks-vue-component'
 // Styles
 import '@/styles/main.scss'
 
-export default function (Vue, { router, head, isClient }) {
+export default function (Vue, { isClient }) {
   // Components
   Vue.component('Layout', DefaultLayout)
   Vue.component('LazyImage', LazyImage)
@@ -19,4 +20,11 @@ export default function (Vue, { router, head, isClient }) {
 
   // Plugins
   Vue.use(image)
+
+  if (isClient) {
+    Vue.use(VueReCaptcha, {
+      siteKey: process.env.GRIDSOME_SITE_RECAPTCHA_KEY,
+      loaderOptions: { autoHideBadge: true }
+    })
+  }
 }
