@@ -19,6 +19,15 @@
         </label>
       </div>
     </div>
+    <div class="field">
+      <div class="control">
+        <vue-recaptcha
+          ref="recaptcha"
+          :sitekey="siteKey"
+          :load-recaptcha-script="true"
+          @verify="recaptcha = $event" />
+      </div>
+    </div>
   </form>
 </template>
 
