@@ -1,6 +1,8 @@
 <template>
   <form
     class="form"
+    data-netlify="true"
+    data-netlify-recaptcha="true"
     @submit.prevent="handleSubmit">
     <div class="field">
       <div class="control">
