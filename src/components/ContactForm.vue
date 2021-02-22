@@ -28,6 +28,31 @@
           @verify="recaptcha = $event" />
       </div>
     </div>
+    <div class="field">
+      <div class="control">
+        <button
+          type="submit"
+          class="button is-primary is-outlined"
+          :class="{'is-loading': state.loading}"
+          :disabled="state.loading">
+          Submit
+        </button>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <p
+          v-if="state.error"
+          class="help is-danger">
+          {{ state.error }}
+        </p>
+        <p
+          v-if="state.success"
+          class="help is-success">
+          Successfully sent!
+        </p>
+      </div>
+    </div>
   </form>
 </template>
 
@@ -39,7 +64,6 @@ export default {
   components: { VueRecaptcha },
   data: () => ({
     siteKey: process.env.GRIDSOME_SITE_RECAPTCHA_KEY,
-    recaptcha: '',
     form: {},
     state: {
       loading: false,
