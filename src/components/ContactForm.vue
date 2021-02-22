@@ -24,7 +24,6 @@
 export default {
   name: 'ContactForm',
   data: () => ({
-    recaptcha: '',
     form: {},
     state: {
       loading: false,
