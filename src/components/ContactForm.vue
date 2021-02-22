@@ -23,9 +23,14 @@
 </template>
 
 <script>
+import VueRecaptcha from 'vue-recaptcha'
+
 export default {
   name: 'ContactForm',
+  components: { VueRecaptcha },
   data: () => ({
+    siteKey: process.env.GRIDSOME_SITE_RECAPTCHA_KEY,
+    recaptcha: '',
     form: {},
     state: {
       loading: false,
@@ -41,17 +46,15 @@ export default {
     },
     async handleSubmit () {
       try {
+        if (!this.recaptcha) throw new Error('Please complete the reCaptcha')
         this.state = { loading: true, error: false, success: false }
-
-        await this.$recaptchaLoaded()
-        const token = await this.$recaptcha('contact')
 
         const res = await fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: this.encode({
             'form-name': 'Contact Form',
-            'g-recaptcha-response': token,
+            'g-recaptcha-response': this.recaptcha,
             ...this.form
           })
         })

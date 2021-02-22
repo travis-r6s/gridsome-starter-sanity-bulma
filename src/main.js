@@ -1,6 +1,5 @@
 // Plugins
 import image from '~/image'
-import { VueReCaptcha } from 'vue-recaptcha-v3'
 
 // Layouts
 import DefaultLayout from '~/layouts/Default.vue'
@@ -20,11 +19,4 @@ export default function (Vue, { isClient }) {
 
   // Plugins
   Vue.use(image)
-
-  if (isClient) {
-    Vue.use(VueReCaptcha, {
-      siteKey: process.env.GRIDSOME_SITE_RECAPTCHA_KEY,
-      loaderOptions: { autoHideBadge: true }
-    })
-  }
 }
