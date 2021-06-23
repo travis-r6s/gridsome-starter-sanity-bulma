@@ -34,4 +34,4 @@ yarn develop
 
 This is an opinionated starter, which I use myself - so there may be a couple of oddities:
 
-- I usually use Yarn, but it freaks out when installing Sanity (to do with Sanity using colons in path names, which doesn;t agree with NTFS), so I use NPM to install teh studio dependencies.
+- I usually use Yarn, but it freaks out when installing Sanity (to do with Sanity using colons in path names, which doesn't agree with NTFS), so I use NPM to install teh studio dependencies.
