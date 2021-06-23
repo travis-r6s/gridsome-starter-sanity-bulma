@@ -8,27 +8,22 @@ module.exports = api => {
     `)
 
     // Optional - add resolvers for singletons
-    // addSchemaResolvers({
-    //   Query: {
-    //     sanityHeader: {
-    //       type: 'SanityHeader',
-    //       resolve (parent, args, ctx) {
-    //         const headerCollection = ctx.store.getCollection('SanityHeader')
-    //         if (!headerCollection) throw new Error('Missing SanityHeader collection')
-    //         const [firstNode] = headerCollection.data()
-    //         return firstNode
-    //       }
-    //     },
-    //     sanityFooter: {
-    //       type: 'SanityFooter',
-    //       resolve (parent, args, ctx) {
-    //         const footerCollection = ctx.store.getCollection('SanityFooter')
-    //         if (!footerCollection) throw new Error('Missing SanityFooter collection')
-    //         const [firstNode] = footerCollection.data()
-    //         return firstNode
-    //       }
+    // const singletonTypes = ['SanityHeader', 'SanityFooter']
+    // const singletonResolvers = Object.fromEntries(singletonTypes.map(type => {
+    //   const name = type.split('').map((c, i) => i === 0 ? c.toLowerCase() : c).join('')
+    //   const resolver = {
+    //     type,
+    //     resolve (parent, args, ctx) {
+    //       const collection = ctx.store.getCollection(type)
+    //       if (!collection) throw new Error(`Missing ${type} collection`)
+    //       const [firstNode] = collection.data()
+    //       return firstNode
     //     }
     //   }
+    //   return [name, resolver]
+    // }))
+    // addSchemaResolvers({
+    //   Query: { ...singletonResolvers }
     // })
   })
 }
