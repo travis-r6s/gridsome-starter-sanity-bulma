@@ -1,15 +1,15 @@
 module.exports = {
   siteName: 'Gridsome',
-  siteUrl: '',
+  siteUrl: 'https://example.com', // Needed for the sitemap plugin
   plugins: [
     {
       use: 'gridsome-source-sanity',
       options: {
         projectId: process.env.GRIDSOME_SANITY_PROJECT_ID,
         dataset: process.env.GRIDSOME_SANITY_DATASET,
-        token: process.env.SANITY_TOKEN,
-        overlayDrafts: process.env.NODE_ENV === 'development',
-        watchMode: process.env.NODE_ENV === 'development'
+        token: process.env.SANITY_TOKEN, // Optional
+        overlayDrafts: process.env.NODE_ENV === 'development', // Optional
+        watchMode: process.env.NODE_ENV === 'development' // Optional
       }
     },
     {
